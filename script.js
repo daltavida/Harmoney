@@ -29,3 +29,13 @@ document.addEventListener("keydown", function (e) {
     closeModal();
   }
 });
+
+const btnScrollTo = document.querySelector(".btn--scroll-to");
+const section1 = document.querySelector("#section--1");
+
+btnScrollTo.addEventListener("click", function (e) {
+  const s1coords = section1.getBoundingClientRect();
+  e.target.getBoundingClientRect();
+
+  window.scrollTo(s1coords.left, s1coords.top);
+});
