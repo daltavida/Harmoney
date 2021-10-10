@@ -37,5 +37,8 @@ btnScrollTo.addEventListener("click", function (e) {
   const s1coords = section1.getBoundingClientRect();
   e.target.getBoundingClientRect();
 
-  window.scrollTo(s1coords.left, s1coords.top);
+  window.scrollTo(
+    s1coords.left + window.pageXOffset,
+    s1coords.top + window.pageYOffset
+  );
 });
