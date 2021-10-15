@@ -56,7 +56,7 @@ tabsContainer.addEventListener("click", function (e) {
     .classList.add("operations__content--active");
 });
 
-nav.addEventListener("mouseover", function (e) {
+const handleHover = function (e, opacity) {
   if (e.target.classList.contains("nav__link")) {
     const link = e.target;
     const siblings = link.closest(".nav").querySelectorAll(".nav__link");
@@ -64,26 +64,14 @@ nav.addEventListener("mouseover", function (e) {
 
     siblings.forEach((el) => {
       if (el !== link) {
-        el.style.opacity = 0.5;
+        el.style.opacity = this;
       }
     });
 
-    logo.style.opacity = 0.5;
+    logo.style.opacity = this;
   }
-});
+};
 
-nav.addEventListener("mouseout", function (e) {
-  if (e.target.classList.contains("nav__link")) {
-    const link = e.target;
-    const siblings = link.closest(".nav").querySelectorAll(".nav__link");
-    const logo = link.closest(".nav").querySelector("img");
+nav.addEventListener("mouseover", handleHover.bind(0.5));
 
-    siblings.forEach((el) => {
-      if (el !== link) {
-        el.style.opacity = 1;
-      }
-    });
-
-    logo.style.opacity = 1;
-  }
-});
+nav.addEventListener("mouseout", handleHover.bind(1));
