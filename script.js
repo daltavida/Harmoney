@@ -122,7 +122,9 @@ const loadImage = function (entries, observer) {
     return;
   }
   entry.target.src = entry.target.dataset.src;
-  entry.target.classList.remove("lazy-img");
+  entry.target.addEventListener("load", function () {
+    entry.target.classList.remove("lazy-img");
+  });
 };
 
 const imgTargets = document.querySelectorAll("img[data-src]");
@@ -130,6 +132,7 @@ const imgTargets = document.querySelectorAll("img[data-src]");
 const imgObserver = new IntersectionObserver(loadImage, {
   root: null,
   threshold: 0,
+  rootMargin: "-200px",
 });
 
 imgTargets.forEach((img) => imgObserver.observe(img));
