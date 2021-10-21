@@ -136,3 +136,7 @@ const imgObserver = new IntersectionObserver(loadImage, {
 });
 
 imgTargets.forEach((img) => imgObserver.observe(img));
+
+const slides = document.querySelectorAll(".slide");
+
+slides.forEach((s, i) => (s.style.transform = `translateX(${i * 100}%)`));
